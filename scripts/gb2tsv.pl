@@ -1,24 +1,17 @@
 #!/usr/bin/env perl
 
-my $usage = "Usage: GenBank2table.pl\n";
+my $usage = "Usage: gb2tsv.pl <genbankIn>\n";
 
-# Retrieve parameter
-my @arg_idx=(0..@ARGV-1);
-for my $i (0..@ARGV-1) {
-	if ($ARGV[$i] eq '-redundancy') {
-	}
-}
-
-my @new_arg;
-for (@arg_idx) { push(@new_arg,$ARGV[$_]) if (defined($_)); }
-@ARGV=@new_arg;
+my $gbInput = shift or die $usage;
 
 my $flagProc = 0;
 
 my $recIdx = 0;
 my %featureHash = ();   # recIdx -> feature
 my %recLines = ();      # recIdx -> lines
-while(<>){
+
+open(FILE,"<$gbInput");
+while(<FILE>){
 	# start processing if meet starting FEATURES
 	if(/^FEATURES/){ $flagProc = 1; next }
 	if(/^\S/){ $flagProc = 0; }
@@ -38,6 +31,7 @@ while(<>){
 	}
 	push @{$recLines{$recIdx}}, $val;
 }
+close FILE;
 
 # post processing
 my %recAttrs = ();      # recIdx -> lines
