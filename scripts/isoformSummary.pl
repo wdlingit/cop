@@ -1,4 +1,4 @@
-#!/usr/bin/perl -w
+#!/usr/bin/env perl
 
 my $usage = "isoformSummary.pl [<alias> <filename>+\n";
 
