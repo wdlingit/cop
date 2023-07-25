@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
 
-my $usage = "isoformSummary.pl [<alias> <filename>+\n";
+my $usage = "isoformSummary.pl [<alias> <filename>]+\n";
 
 die $usage if @ARGV==0;
 
