@@ -85,5 +85,6 @@ for my $term (sort keys %termHash){
 # Logarithm
 sub log10 {
 	my $n = shift;
+	$n=1E-310 if $n<1E-310;
 	return log($n)/log(10);
 }
