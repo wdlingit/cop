@@ -56,7 +56,12 @@ while(@ARGV>0){
 				$term .= "_$t[$idx-1]";
 			}
 		}
-		$valHash{$setName}{$term} = $pVal;
+		# update if nonexist or smaller
+		if(not exists $valHash{$setName}{$term}){
+			$valHash{$setName}{$term} = $pVal;
+		}elsif($valHash{$setName}{$term} > $pVal){
+			$valHash{$setName}{$term} = $pVal;
+		}
 		
 		# collect this term if pass
 		if($pVal < $pCut){
