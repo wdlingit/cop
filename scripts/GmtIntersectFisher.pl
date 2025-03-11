@@ -63,6 +63,9 @@ if($inputIsGroupFile){
     }
     close FILE;
     
+    # header
+    print "#group\tID\tName\toTarget\toBkg\txTarget\txBkg\tfisherLeft\tfisherRight\tfisherTwo\n";
+
     for my $group (keys %groupGeneHash){
         my $tempfile = File::Temp->new();
         for my $g (keys %{$groupGeneHash{$group}}){
@@ -73,6 +76,9 @@ if($inputIsGroupFile){
         gmtComputeOneSet($tempfile->filename,$group);
     }
 }else{
+    # header
+    print "#ID\tName\toTarget\toBkg\txTarget\txBkg\tfisherLeft\tfisherRight\tfisherTwo\n";
+
     gmtComputeOneSet($geneFile,"");
 }
 
