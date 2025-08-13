@@ -201,6 +201,7 @@ if(length($startTime)>0){
 while(1){
     print "TIME: ".dateString(time).", ACTION: $switchIdx\n";
     execForceNewline($deviceHash{$targetDevice}[$switchIdx]);
+    print "TIME: ".dateString(time).", ACTION: $switchIdx, done\n";
     
     $switchIdx++;
     $switchIdx=0 if $switchIdx>=@switchArr;
